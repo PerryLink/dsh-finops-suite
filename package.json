@@ -1,0 +1,48 @@
+{
+  "name": "dsh-finops-suite",
+  "version": "0.1.0-alpha.0",
+  "description": "One-command install for dsh-einvoice, dsh-bankrec, dsh-ap-three-way and dsh-travel-recon.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.3 <0.3.0",
+    "node": ">=24.9.0 <25"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "perrylink",
+    "suite",
+    "finance"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PerryLink/dsh-finops-suite.git"
+  },
+  "homepage": "https://perrylink.github.io/dsh-plugins/packages/dsh-finops-suite.html",
+  "bugs": {
+    "url": "https://github.com/PerryLink/dsh-finops-suite/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "dsh-einvoice": "0.2.0-alpha.3",
+    "dsh-bankrec": "0.1.0-alpha.6",
+    "dsh-ap-three-way": "0.1.0-alpha.3",
+    "dsh-travel-recon": "0.1.0-alpha.4"
+  }
+}

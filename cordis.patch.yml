@@ -1,0 +1,9 @@
+- insert:
+    - id: dsh-einvoice
+      name: dsh-einvoice
+    - id: dsh-bankrec
+      name: dsh-bankrec
+    - id: dsh-ap-three-way
+      name: dsh-ap-three-way
+    - id: dsh-travel-recon
+      name: dsh-travel-recon
