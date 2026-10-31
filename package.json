@@ -1,6 +1,6 @@
 {
   "name": "dsh-finops-suite",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "One-command install for dsh-einvoice, dsh-bankrec, dsh-ap-three-way and dsh-travel-recon.",
   "type": "module",
   "license": "Apache-2.0",
@@ -17,7 +17,12 @@
   "files": [
     "cordis.patch.yml",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "README-zh.md",
+    "README-es.md",
+    "README-pt.md",
+    "README-hi.md",
+    "docs/assets"
   ],
   "keywords": [
     "deepseek-harness",
