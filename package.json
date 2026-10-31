@@ -1,6 +1,6 @@
 {
   "name": "dsh-finops-suite",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "One-command install for dsh-einvoice, dsh-bankrec, dsh-ap-three-way and dsh-travel-recon.",
   "type": "module",
   "license": "Apache-2.0",
@@ -45,9 +45,9 @@
     "access": "public"
   },
   "dependencies": {
-    "dsh-einvoice": "0.2.0-alpha.4",
-    "dsh-bankrec": "0.1.0-alpha.7",
-    "dsh-ap-three-way": "0.1.0-alpha.4",
-    "dsh-travel-recon": "0.1.0-alpha.5"
+    "dsh-einvoice": "0.2.0-alpha.5",
+    "dsh-bankrec": "0.1.0-alpha.8",
+    "dsh-ap-three-way": "0.1.0-alpha.5",
+    "dsh-travel-recon": "0.1.0-alpha.6"
   }
 }
