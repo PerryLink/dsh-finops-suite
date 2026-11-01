@@ -48,6 +48,8 @@ Desinstalar:
 dsh plugin --profile <profile> remove dsh-finops-suite
 ```
 
+Remover a suíte remove apenas a linha da suíte; os pacotes membros continuam instalados. Remova-os individualmente se necessário. Veja [SUITE.md](SUITE.md).
+
 
 ### Canais de instalação
 
@@ -66,14 +68,14 @@ Entrada e saída permanecem locais; nada é enviado.
 
 ## Membros
 
-Os nomes das ferramentas são a API estável; as descrições estão localizadas.
+A suíte apenas instala estes membros; não tem superfície de ferramentas própria. As versões são fixadas em `dependencies`.
 
 | Membro | Versão |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.3` |
-| `dsh-bankrec` | `0.1.0-alpha.6` |
-| `dsh-ap-three-way` | `0.1.0-alpha.3` |
-| `dsh-travel-recon` | `0.1.0-alpha.4` |
+| `dsh-einvoice` | `0.2.0-alpha.7` |
+| `dsh-bankrec` | `0.1.0-alpha.10` |
+| `dsh-ap-three-way` | `0.1.0-alpha.7` |
+| `dsh-travel-recon` | `0.1.0-alpha.9` |
 
 ## Início rápido
 

@@ -48,6 +48,8 @@ Uninstall:
 dsh plugin --profile <profile> remove dsh-finops-suite
 ```
 
+Removing the suite removes only the suite row; the member packages stay installed. Remove them individually if needed. See [SUITE.md](SUITE.md).
+
 
 ### Install channels
 
@@ -66,14 +68,14 @@ Input and output stay local; nothing is uploaded.
 
 ## Members
 
-Tool names and descriptions are kept in English to match the runtime output.
+The suite only installs these members; it has no tool surface of its own. Versions are pinned in `dependencies`.
 
 | Member | Version |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.3` |
-| `dsh-bankrec` | `0.1.0-alpha.6` |
-| `dsh-ap-three-way` | `0.1.0-alpha.3` |
-| `dsh-travel-recon` | `0.1.0-alpha.4` |
+| `dsh-einvoice` | `0.2.0-alpha.7` |
+| `dsh-bankrec` | `0.1.0-alpha.10` |
+| `dsh-ap-three-way` | `0.1.0-alpha.7` |
+| `dsh-travel-recon` | `0.1.0-alpha.9` |
 
 ## Quick start
 
