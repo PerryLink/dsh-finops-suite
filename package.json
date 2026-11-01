@@ -22,7 +22,13 @@
     "README-es.md",
     "README-pt.md",
     "README-hi.md",
-    "docs/assets"
+    "docs/assets",
+    "SECURITY.md",
+    "PRIVACY.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "icon.svg"
   ],
   "keywords": [
     "deepseek-harness",
@@ -49,5 +55,6 @@
     "dsh-bankrec": "0.1.0-alpha.8",
     "dsh-ap-three-way": "0.1.0-alpha.5",
     "dsh-travel-recon": "0.1.0-alpha.6"
-  }
+  },
+  "icon": "icon.svg"
 }
