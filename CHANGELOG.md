@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.0-alpha.7] — 2026-11-01
+
+### Changed
+
+- Member pins updated to the 2026-11-01 releases:
+- `dsh-einvoice` -> `0.2.0-alpha.8`
+- `dsh-bankrec` -> `0.1.0-alpha.11`
+- `dsh-ap-three-way` -> `0.1.0-alpha.8`
+- `dsh-travel-recon` -> `0.1.0-alpha.10`
+
 ## [0.1.0-alpha.6] — 2026-11-01
 
 ### Changed

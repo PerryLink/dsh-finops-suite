@@ -72,10 +72,10 @@ suite 只负责安装这些成员，本身没有工具面；版本由 `dependenc
 
 | 成员 | 版本 |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.7` |
-| `dsh-bankrec` | `0.1.0-alpha.10` |
-| `dsh-ap-three-way` | `0.1.0-alpha.7` |
-| `dsh-travel-recon` | `0.1.0-alpha.9` |
+| `dsh-einvoice` | `0.2.0-alpha.8` |
+| `dsh-bankrec` | `0.1.0-alpha.11` |
+| `dsh-ap-three-way` | `0.1.0-alpha.8` |
+| `dsh-travel-recon` | `0.1.0-alpha.10` |
 
 ## 快速开始
 

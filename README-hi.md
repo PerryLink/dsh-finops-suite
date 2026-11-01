@@ -72,10 +72,10 @@ npm अनुशंसित है; बाकी वर्ज़न पिन �
 
 | सदस्य | संस्करण |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.7` |
-| `dsh-bankrec` | `0.1.0-alpha.10` |
-| `dsh-ap-three-way` | `0.1.0-alpha.7` |
-| `dsh-travel-recon` | `0.1.0-alpha.9` |
+| `dsh-einvoice` | `0.2.0-alpha.8` |
+| `dsh-bankrec` | `0.1.0-alpha.11` |
+| `dsh-ap-three-way` | `0.1.0-alpha.8` |
+| `dsh-travel-recon` | `0.1.0-alpha.10` |
 
 ## त्वरित शुरुआत
 
