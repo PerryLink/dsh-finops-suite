@@ -70,13 +70,13 @@ node samples/quickstart/run.mjs
 
 ```text
 dsh-finops-suite quickstart (offline)
-suite:    dsh-finops-suite 0.1.0-alpha.9
+suite:    dsh-finops-suite 0.1.0-alpha.10
 profile:  finops-demo (synthetic, 4/4 rows enabled)
 members:  4/4 resolved
-  dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
-  dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
-  dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
-  dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
+  dsh-einvoice         0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-bankrec          0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-ap-three-way     0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-travel-recon     0.1.0-alpha.10   [manifest pin]    profile=enabled
 network:  false (no fetch, no registry call)
 golden:   samples/quickstart/expected/result.json matches
 quickstart ok
@@ -102,7 +102,7 @@ quickstart ok
 
 ## 版本
 
-当前版本：`0.1.0-alpha.9`（与 `package.json` 一致）。
+当前版本：`0.1.0-alpha.10`（与 `package.json` 一致）。
 
 本地验证（2026-11-02）：
 
@@ -150,10 +150,10 @@ suite 只负责安装这些成员，本身没有工具面；版本由 `dependenc
 
 | 成员 | 版本 |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.11` |
-| `dsh-bankrec` | `0.1.0-alpha.16` |
-| `dsh-ap-three-way` | `0.1.0-alpha.11` |
-| `dsh-travel-recon` | `0.1.0-alpha.13` |
+| `dsh-einvoice` | `0.1.0-alpha.10` |
+| `dsh-bankrec` | `0.1.0-alpha.10` |
+| `dsh-ap-three-way` | `0.1.0-alpha.10` |
+| `dsh-travel-recon` | `0.1.0-alpha.10` |
 
 ## 安装后自检
 

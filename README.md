@@ -70,13 +70,13 @@ Real output:
 
 ```text
 dsh-finops-suite quickstart (offline)
-suite:    dsh-finops-suite 0.1.0-alpha.9
+suite:    dsh-finops-suite 0.1.0-alpha.10
 profile:  finops-demo (synthetic, 4/4 rows enabled)
 members:  4/4 resolved
-  dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
-  dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
-  dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
-  dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
+  dsh-einvoice         0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-bankrec          0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-ap-three-way     0.1.0-alpha.10   [manifest pin]    profile=enabled
+  dsh-travel-recon     0.1.0-alpha.10   [manifest pin]    profile=enabled
 network:  false (no fetch, no registry call)
 golden:   samples/quickstart/expected/result.json matches
 quickstart ok
@@ -102,7 +102,7 @@ External systems: none
 
 ## Version
 
-Current version: `0.1.0-alpha.9` (matches `package.json`).
+Current version: `0.1.0-alpha.10` (matches `package.json`).
 
 Local verification (2026-11-02):
 
@@ -150,10 +150,10 @@ The suite only installs these members; it has no tool surface of its own. Versio
 
 | Member | Version |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.11` |
-| `dsh-bankrec` | `0.1.0-alpha.16` |
-| `dsh-ap-three-way` | `0.1.0-alpha.11` |
-| `dsh-travel-recon` | `0.1.0-alpha.13` |
+| `dsh-einvoice` | `0.1.0-alpha.10` |
+| `dsh-bankrec` | `0.1.0-alpha.10` |
+| `dsh-ap-three-way` | `0.1.0-alpha.10` |
+| `dsh-travel-recon` | `0.1.0-alpha.10` |
 
 ## Post-install self-check
 
