@@ -33,6 +33,84 @@ dsh plugin --profile <profile> add dsh-finops-suite
 
 *工作流：本地输入 → 插件 → 本地输出；不需要调用模型。*
 
+## 一句话
+
+一次装齐财务四件套，并核对四个成员包的版本是否可解析。
+
+## 适合 / 不适合
+
+- **适合**：要在一个 DSH profile 里同时装电子发票、银行对账、三单匹配、差旅对账；需要把四个成员锁在同一组版本；装完先确认成员行一个不少。
+- **不适合**：只想装其中一件（直接装对应成员包更轻）；想让 suite 自己处理发票或流水（suite 没有工具面，处理由成员包完成）；需要 OCR、联网抓流水或对接 ERP。
+
+## 输入
+
+- 安装动作本身不读业务单据。
+- 自带样例读取 `samples/quickstart/input/profile.json`（合成 profile dump，< 1 KB）、本包 `package.json` 与 `cordis.patch.yml`；不读其他目录、不读客户数据。
+- 成员包各自的输入（发票、银行流水、三单、差旅单）见成员仓库 README；本 suite 不改变它们的输入输出。
+
+## 输出
+
+- 终端给出成员清单、固定版本、解析来源；退出码 `0` 表示 4/4 可解析。
+- `node samples/quickstart/run.mjs --json` 输出金标 JSON，文件在 `samples/quickstart/expected/result.json`。
+- 不写任何文件、不调用模型、不联网、不上传；不改动原文件。
+
+## 示例
+
+把这句话粘进 DSH：
+
+> 帮我装好财务运营四件套（电子发票、银行对账、三单匹配、差旅对账），确认四个成员包都能解析，并列出各自版本。
+
+装好后在包目录跑自带样例（离线，不装依赖也能跑）：
+
+```sh
+node samples/quickstart/run.mjs
+```
+
+真实输出：
+
+```text
+dsh-finops-suite quickstart (offline)
+suite:    dsh-finops-suite 0.1.0-alpha.9
+profile:  finops-demo (synthetic, 4/4 rows enabled)
+members:  4/4 resolved
+  dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
+  dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
+  dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+  dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
+network:  false (no fetch, no registry call)
+golden:   samples/quickstart/expected/result.json matches
+quickstart ok
+```
+
+![dsh-finops-suite quickstart 真实运行输出](docs/assets/quickstart.png)
+
+截图就是上面这条命令的真实输出；金标与截图记录见 `screenshots.json`。
+
+## 权限
+
+读：`samples/quickstart/input/profile.json`、`cordis.patch.yml`、`package.json`；不读其他目录
+写：无（R0，只打印到终端；不写 `$DSH_HOME`、不改原文件）
+联网：否
+外部系统：无
+
+## FAQ
+
+1. **装不上或装完少一个成员？** 先跑 `node samples/quickstart/run.mjs`。如果两处成员列表不一致，会报 `E_SUITE_PATCH_MISMATCH`；按 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) 对齐后重装。
+2. **结果不对，版本和套件声明的不一样？** 套件固定成员版本；单独升级成员会报 `E_SUITE_VERSION_MISMATCH`。删掉该 profile 下的 `node_modules` 后重装 suite。
+3. **能直接处理我的发票 / 流水吗？** suite 本身不处理单据，只负责一次装齐成员。发票、银行对账、三单匹配、差旅对账各自用成员包的工具；自带样例只用合成 profile，不读真实单据。
+4. **卸载 suite 会把成员也删掉吗？** 不会。卸载只移除 suite 行，成员包保留；不需要时再逐个卸载。
+
+## 版本
+
+当前版本：`0.1.0-alpha.9`（与 `package.json` 一致）。
+
+本地验证（2026-11-02）：
+
+```sh
+node --test test/suite.test.mjs            # 8 项通过，0 失败
+node samples/quickstart/run.mjs --check    # golden matches
+```
+
 ## 安装
 
 安装并验证：
@@ -72,35 +150,20 @@ suite 只负责安装这些成员，本身没有工具面；版本由 `dependenc
 
 | 成员 | 版本 |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.8` |
-| `dsh-bankrec` | `0.1.0-alpha.11` |
-| `dsh-ap-three-way` | `0.1.0-alpha.8` |
-| `dsh-travel-recon` | `0.1.0-alpha.10` |
+| `dsh-einvoice` | `0.2.0-alpha.11` |
+| `dsh-bankrec` | `0.1.0-alpha.16` |
+| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-## 快速开始
+## 安装后自检
 
-```sh
-dsh plugin --profile <profile> add dsh-finops-suite
-dsh --profile <profile> --dump-config | grep dsh-finops-suite
-```
-
-![Terminal demo: real dsh-finops-suite install output](docs/assets/dsh-finops-suite-install.gif)
-
-*临时 profile 中真实 `dsh plugin add dsh-finops-suite` 输出；路径为临时目录。*
-
-## 示例
-
-### fixture 支撑的示例
-
-命令:
+装完先跑自带样例，确认四个成员都能解析：
 
 ```sh
-dsh plugin --profile <profile> add dsh-finops-suite
+node samples/quickstart/run.mjs
 ```
 
-这是 fixture 支撑的验收行，不是客户运行；没有编造输出。
-
-![Real install output](docs/assets/dsh-finops-suite-install.gif)
+成员包各自的工具面见上表链接的成员仓库；suite 本身不提供工具。
 
 ## 边界
 

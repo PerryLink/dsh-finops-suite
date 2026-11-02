@@ -33,6 +33,84 @@ dsh plugin --profile <profile> add dsh-finops-suite
 
 *Workflow: local input → plugin → local output. No model call is required.*
 
+## One line
+
+Install the four finance packages in one command and verify every member version resolves.
+
+## Best for / not for
+
+- **Best for:** installing dsh-einvoice, dsh-bankrec, dsh-ap-three-way and dsh-travel-recon into one DSH profile; keeping all four members on one pinned version set; confirming no member row is missing right after install.
+- **Not for:** installing only one package (install that member directly); expecting the suite itself to process invoices or bank statements (it has no tool surface — the members do); OCR, bank feeds, or ERP integration.
+
+## Input
+
+- The install itself reads no business documents.
+- The bundled sample reads `samples/quickstart/input/profile.json` (synthetic profile dump, < 1 KB), plus this package's `package.json` and `cordis.patch.yml`. It reads no other directory and no customer data.
+- Each member's own input (invoices, bank statements, three-way match rows, travel claims) is documented in that member's README; the suite does not change it.
+
+## Output
+
+- The terminal prints the member list, pinned version, and where each version was resolved from; exit code `0` means 4/4 resolved.
+- `node samples/quickstart/run.mjs --json` prints the golden JSON stored at `samples/quickstart/expected/result.json`.
+- No files are written, no model is called, no network is used, nothing is uploaded, and source documents are untouched.
+
+## Example
+
+Paste this into DSH:
+
+> 帮我装好财务运营四件套（电子发票、银行对账、三单匹配、差旅对账），确认四个成员包都能解析，并列出各自版本。
+
+Then run the bundled sample from the package directory (offline, no dependency install needed):
+
+```sh
+node samples/quickstart/run.mjs
+```
+
+Real output:
+
+```text
+dsh-finops-suite quickstart (offline)
+suite:    dsh-finops-suite 0.1.0-alpha.9
+profile:  finops-demo (synthetic, 4/4 rows enabled)
+members:  4/4 resolved
+  dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
+  dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
+  dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+  dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
+network:  false (no fetch, no registry call)
+golden:   samples/quickstart/expected/result.json matches
+quickstart ok
+```
+
+![dsh-finops-suite quickstart real terminal output](docs/assets/quickstart.png)
+
+The screenshot is the real output of the command above; the golden file and screenshot metadata are in `screenshots.json`.
+
+## Permissions
+
+Read: `samples/quickstart/input/profile.json`, `cordis.patch.yml`, `package.json`; no other directory
+Write: none (R0 — terminal output only; no `$DSH_HOME` writes, source files untouched)
+Network: no
+External systems: none
+
+## FAQ
+
+1. **The install fails or a member is missing.** Run `node samples/quickstart/run.mjs`. If the two member lists disagree it raises `E_SUITE_PATCH_MISMATCH`; align them as described in [TROUBLESHOOTING.md](TROUBLESHOOTING.md), then reinstall.
+2. **The version does not match the suite declaration.** The suite pins exact member versions; upgrading one member alone raises `E_SUITE_VERSION_MISMATCH`. Remove `node_modules` in that profile and reinstall the suite.
+3. **Can the suite process my invoices or bank statements?** No — the suite only installs members. Use the member packages for invoice, reconciliation, three-way match, and travel work; the bundled sample uses a synthetic profile and reads no real documents.
+4. **Does uninstalling the suite remove the members?** No. Removing the suite removes only its row; member packages stay installed until you remove them.
+
+## Version
+
+Current version: `0.1.0-alpha.9` (matches `package.json`).
+
+Local verification (2026-11-02):
+
+```sh
+node --test test/suite.test.mjs            # 8 passed, 0 failed
+node samples/quickstart/run.mjs --check    # golden matches
+```
+
 ## Install
 
 Install and verify:
@@ -72,35 +150,20 @@ The suite only installs these members; it has no tool surface of its own. Versio
 
 | Member | Version |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.8` |
-| `dsh-bankrec` | `0.1.0-alpha.11` |
-| `dsh-ap-three-way` | `0.1.0-alpha.8` |
-| `dsh-travel-recon` | `0.1.0-alpha.10` |
+| `dsh-einvoice` | `0.2.0-alpha.11` |
+| `dsh-bankrec` | `0.1.0-alpha.16` |
+| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-## Quick start
+## Post-install self-check
 
-```sh
-dsh plugin --profile <profile> add dsh-finops-suite
-dsh --profile <profile> --dump-config | grep dsh-finops-suite
-```
-
-![Terminal demo: real dsh-finops-suite install output](docs/assets/dsh-finops-suite-install.gif)
-
-*Real `dsh plugin add dsh-finops-suite` output in a temporary profile; the path is temporary.*
-
-## Examples
-
-### Fixture-backed example
-
-Command:
+Run the bundled sample after install to confirm all four members resolve:
 
 ```sh
-dsh plugin --profile <profile> add dsh-finops-suite
+node samples/quickstart/run.mjs
 ```
 
-This is a fixture-backed acceptance row, not a customer run; no output is invented.
-
-![Real install output](docs/assets/dsh-finops-suite-install.gif)
+Each member's tool surface lives in its own repository; the suite ships no tools.
 
 ## Limits
 

@@ -1,0 +1,12 @@
+$ node samples/quickstart/run.mjs
+dsh-finops-suite quickstart (offline)
+suite:    dsh-finops-suite 0.1.0-alpha.9
+profile:  finops-demo (synthetic, 4/4 rows enabled)
+members:  4/4 resolved
+  dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
+  dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
+  dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+  dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
+network:  false (no fetch, no registry call)
+golden:   samples/quickstart/expected/result.json matches
+quickstart ok

@@ -1,6 +1,6 @@
 {
   "name": "dsh-finops-suite",
-  "version": "0.1.0-alpha.9",
+  "version": "0.1.0-alpha.10",
   "description": "One-command install for dsh-einvoice, dsh-bankrec, dsh-ap-three-way and dsh-travel-recon.",
   "type": "module",
   "license": "Apache-2.0",
@@ -8,7 +8,25 @@
     "manifestVersion": 1,
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "demo": {
+      "sample": "samples/quickstart/input/profile.json",
+      "prompt": "帮我装好财务运营四件套（电子发票、银行对账、三单匹配、差旅对账），确认四个成员包都能解析，并列出各自版本。",
+      "expect": "samples/quickstart/expected/result.json",
+      "screenshot": "docs/assets/quickstart.png",
+      "reads": [
+        "samples/quickstart/input/profile.json（合成 profile dump）与本包 cordis.patch.yml、package.json"
+      ],
+      "writes": [],
+      "network": false,
+      "external": []
     }
+  },
+  "scripts": {
+    "quickstart": "node samples/quickstart/run.mjs",
+    "test": "node --test test/suite.test.mjs",
+    "gate": "node scripts/gate.mjs",
+    "check": "node scripts/check.mjs"
   },
   "engines": {
     "dsh": ">=0.2.1-rc.3 <0.3.0",
@@ -16,6 +34,8 @@
   },
   "files": [
     "cordis.patch.yml",
+    "src",
+    "samples",
     "README.md",
     "LICENSE",
     "README-zh.md",
@@ -29,6 +49,8 @@
     "CONTRIBUTING.md",
     "CHANGELOG.md",
     "SUITE.md",
+    "TROUBLESHOOTING.md",
+    "screenshots.json",
     "icon.svg"
   ],
   "keywords": [

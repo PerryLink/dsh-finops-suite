@@ -1,0 +1,12 @@
+{
+  "_note": "Synthetic DSH profile dump for the dsh-finops-suite quickstart. No user, customer or production data.",
+  "profile": "finops-demo",
+  "kind": "synthetic",
+  "created_at": "2026-11-02T00:00:00Z",
+  "rows": [
+    { "id": "dsh-einvoice", "version": "0.2.0-alpha.11", "enabled": true },
+    { "id": "dsh-bankrec", "version": "0.1.0-alpha.16", "enabled": true },
+    { "id": "dsh-ap-three-way", "version": "0.1.0-alpha.11", "enabled": true },
+    { "id": "dsh-travel-recon", "version": "0.1.0-alpha.13", "enabled": true }
+  ]
+}

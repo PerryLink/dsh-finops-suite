@@ -1,0 +1,44 @@
+{
+  "suite": "dsh-finops-suite",
+  "version": "0.1.0-alpha.9",
+  "sample": "samples/quickstart/input/profile.json",
+  "network": false,
+  "profile": {
+    "name": "finops-demo",
+    "kind": "synthetic",
+    "rows": 4,
+    "enabled": 4,
+    "missing": 0
+  },
+  "members": [
+    {
+      "id": "dsh-einvoice",
+      "version": "0.2.0-alpha.11",
+      "pin": "0.2.0-alpha.11",
+      "profile_row": "enabled"
+    },
+    {
+      "id": "dsh-bankrec",
+      "version": "0.1.0-alpha.16",
+      "pin": "0.1.0-alpha.16",
+      "profile_row": "enabled"
+    },
+    {
+      "id": "dsh-ap-three-way",
+      "version": "0.1.0-alpha.11",
+      "pin": "0.1.0-alpha.11",
+      "profile_row": "enabled"
+    },
+    {
+      "id": "dsh-travel-recon",
+      "version": "0.1.0-alpha.13",
+      "pin": "0.1.0-alpha.13",
+      "profile_row": "enabled"
+    }
+  ],
+  "summary": {
+    "members": 4,
+    "resolved": 4,
+    "ok": true
+  }
+}

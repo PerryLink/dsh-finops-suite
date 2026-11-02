@@ -1,0 +1,15 @@
+[
+  {
+    "path": "docs/assets/quickstart.png",
+    "kind": "quickstart",
+    "alt": "dsh-finops-suite quickstart terminal output",
+    "caption": "Real command: node samples/quickstart/run.mjs — dsh-finops-suite 0.1.0-alpha.9, synthetic profile, 4/4 members resolved (dsh-einvoice 0.2.0-alpha.11, dsh-bankrec 0.1.0-alpha.16, dsh-ap-three-way 0.1.0-alpha.11, dsh-travel-recon 0.1.0-alpha.13), offline, golden matches. Rendered from the captured terminal output.",
+    "command": "node samples/quickstart/run.mjs",
+    "run_at": "2026-11-02T14:58:55Z",
+    "output_sha256": "774e6033062330fc2c79bbca67e63de81b2283f364e15fecac3f20a75eefc280",
+    "output_path": "samples/quickstart/expected/result.json",
+    "log": "docs/assets/quickstart.log",
+    "log_sha256": "0789228d0f1356398b2d5c20a4e65c122f02ab0da13fa46ee0ca4963ca51e6e6",
+    "image_sha256": "9f804dd53746624f8275bdadbedfeb19d4fa5a917723482b003f9c2c60cb63ba"
+  }
+]
