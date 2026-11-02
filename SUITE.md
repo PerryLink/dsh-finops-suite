@@ -6,10 +6,10 @@
 
 | Member | Pinned version |
 |---|---:|
-| `dsh-einvoice` | `0.2.0-alpha.10` |
-| `dsh-bankrec` | `0.1.0-alpha.15` |
-| `dsh-ap-three-way` | `0.1.0-alpha.10` |
-| `dsh-travel-recon` | `0.1.0-alpha.12` |
+| `dsh-einvoice` | `0.2.0-alpha.11` |
+| `dsh-bankrec` | `0.1.0-alpha.16` |
+| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-travel-recon` | `0.1.0-alpha.13` |
 
 ## Install
 
