@@ -1,6 +1,6 @@
 {
   "name": "dsh-finops-suite",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-alpha.11",
   "description": "One-command install for dsh-einvoice, dsh-bankrec, dsh-ap-three-way and dsh-travel-recon.",
   "type": "module",
   "license": "Apache-2.0",
