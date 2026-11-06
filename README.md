@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-flow-dark.svg">
-  <img src="docs/assets/dsh-finops-suite-flow-light.svg" width="100%" alt="dsh-finops-suite 安装流程：dsh plugin add → cordis.patch.yml 四行成员 → package.json 四个精确版本 → samples/quickstart/run.mjs → 4/4 resolved；错误码 E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-finops-suite-hero-zh-light.webp" width="100%" alt="dsh-finops-suite 横幅：左侧一句话「一条命令装齐财务运营四件套，四个成员锁在同一组精确版本」；右侧一根同一组精确版本梁夹住四行成员——dsh-einvoice 0.2.0-alpha.11（电子发票）、dsh-bankrec 0.1.0-alpha.16（银行对账）、dsh-ap-three-way 0.1.0-alpha.11（三单匹配）、dsh-travel-recon 0.1.0-alpha.13（差旅对账），每行标出 [manifest pin] 与 profile: enabled，底部 4/4 resolved 与 profile 4/4 行已启用">
 </picture>
 
 # dsh-finops-suite
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-finops-suite
 ## 它是什么
 
 `dsh-finops-suite` 一次装齐财务运营四件套：电子发票（`dsh-einvoice`）、银行对账（`dsh-bankrec`）、三单匹配（`dsh-ap-three-way`）与差旅对账（`dsh-travel-recon`）。`package.json#dependencies` 把四个成员钉在精确版本上，`cordis.patch.yml` 在 profile 里插入四行成员；装完跑一遍自带离线样例，终端逐行给出成员、固定版本与解析来源——4/4 resolved 才算装全。套件是 **install-only bundle**：没有工具面、没有配置键，不读单据、不调用模型、不联网、不写文件；真正的发票、流水、三单与差旅行程，由四个成员各自的工具处理。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-finops-suite-flow-v5-light.svg" width="100%" alt="dsh-finops-suite 结构图（阶梯）：左上是唯一入口——一条安装命令和它只读的三个文件（package.json、cordis.patch.yml、profile.json）；三级台阶自左下向右上：① 清单可读（package.json → dsh.bundle.patch、patch 四行 id/name），失败码 E_SUITE_MANIFEST_MISSING；② 行与钉对得上（patch 四行 == deps 四钉、id == name、无重复 id），失败码 E_SUITE_PATCH_MISMATCH；③ 版本锁住（installed == pin 或清单钉、profile 行同名同版本），失败码 E_SUITE_VERSION_MISMATCH；右侧判决台给出 4/4 resolved、四个成员的精确版本与 network: false、writes: 0、tools: 0、config keys: 0">
+</picture>
 
 ## 适合与不适合
 
@@ -308,10 +313,10 @@ pnpm check             # node scripts/check.mjs（查 registry，CI 用）
 | `scripts/check.mjs` | registry 安装冒烟（CI 用，唯一联网脚本） |
 | `scripts/acceptance.mjs` | 由真实本地检查重建 `ACCEPTANCE.csv` |
 | `scripts/gen-readme-assets.py` | 生成 README 配图（Python + Pillow） |
-| `docs/assets/` | 流程图与 quickstart 截图 |
+| `docs/assets/` | 配图（hero 与结构图）与 quickstart 截图 |
 | `cordis.patch.yml` | 成员装配面（四行 `insert`） |
 
-配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成：`python scripts/gen-readme-assets.py` 会输出 `docs/assets/dsh-finops-suite-flow-{light,dark}.svg` 深浅两版（矢量，五语共用），旧版单图 `dsh-finops-suite-flow.svg` 保留不动。脚本可重复执行。
+配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成：`python scripts/gen-readme-assets.py` 会输出 `docs/assets/dsh-finops-suite-hero-{zh,en}-{light,dark}.webp`（1440×576 横幅，四张）与 `docs/assets/dsh-finops-suite-flow-v5-{light,dark}.svg`（1100×660 结构图，矢量，五语共用）；旧版单图 `dsh-finops-suite-flow.svg` 保留不动。脚本可重复执行。
 
 五语 README：`README.md` 是中文源，`README.en.md` / `README.es.md` / `README.pt.md` / `README.hi.md` 同步。
 

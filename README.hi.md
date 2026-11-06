@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-flow-dark.svg">
-  <img src="docs/assets/dsh-finops-suite-flow-light.svg" width="100%" alt="dsh-finops-suite इंस्टॉल फ़्लो: dsh plugin add → cordis.patch.yml में चार पंक्तियाँ → package.json में चार सटीक पिन → samples/quickstart/run.mjs → 4/4 resolved; त्रुटि कोड E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-en-dark.webp">
+  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="dsh-finops-suite हीरो: नाम और पंक्ति चार सदस्य, एक इंस्टॉल, चार सटीक संस्करण, एक सेट; दाईं ओर एक ही संस्करण सेट चार सदस्य पंक्तियों को पकड़े हुए — dsh-einvoice 0.2.0-alpha.11 (ई-इनवॉइस), dsh-bankrec 0.1.0-alpha.16 (बैंक रिकंसिलिएशन), dsh-ap-three-way 0.1.0-alpha.11 (थ्री-वे मैच) और dsh-travel-recon 0.1.0-alpha.13 (ट्रैवल रिकंसिलिएशन) —, हर पंक्ति पर [manifest pin] और profile: enabled, अंत में 4/4 resolved गिनती">
 </picture>
 
 # dsh-finops-suite
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-finops-suite
 ## यह क्या है
 
 `dsh-finops-suite` वित्त-संचालन के चारों पैकेज एक साथ इंस्टॉल करती है: ई-इनवॉइस (`dsh-einvoice`), बैंक रिकंसिलिएशन (`dsh-bankrec`), थ्री-वे मैच (`dsh-ap-three-way`) और ट्रैवल रिकंसिलिएशन (`dsh-travel-recon`)। `package.json#dependencies` चारों सदस्यों को सटीक संस्करणों पर पिन करता है, और `cordis.patch.yml` प्रोफ़ाइल में चार सदस्य पंक्तियाँ जोड़ता है। इंस्टॉल के बाद बंडल किया गया ऑफ़लाइन नमूना चलाएँ: टर्मिनल हर सदस्य, उसका पिन किया संस्करण और रिज़ॉल्व होने का स्रोत दिखाता है — 4/4 resolved का मतलब है कि सेट पूरा है। सूट एक **सिर्फ़-इंस्टॉल बंडल** है: कोई टूल सतह नहीं, कोई कॉन्फ़िगरेशन कुंजी नहीं, कोई दस्तावेज़ नहीं पढ़ा जाता, कोई मॉडल कॉल नहीं, कोई नेटवर्क नहीं और कोई फ़ाइल नहीं लिखी जाती। असली इनवॉइस, स्टेटमेंट, थ्री-वे पंक्तियाँ और यात्रा दावे चारों सदस्यों के अपने टूल संभालते हैं।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-finops-suite-flow-v5-light.svg" width="100%" alt="dsh-finops-suite संरचना (सीढ़ी): ऊपर बाएँ केवल एक प्रवेश — एक इंस्टॉल कमांड और वे तीन फ़ाइलें जो वह पढ़ती है (package.json, cordis.patch.yml, profile.json); तीन चरण नीचे बाएँ से ऊपर चढ़ते हैं: (1) मैनिफ़ेस्ट पढ़े जा सकते हैं (package.json से dsh.bundle.patch, चार id/name पंक्तियाँ), विफलता E_SUITE_MANIFEST_MISSING; (2) पंक्तियाँ पिन से मेल खाती हैं (patch चार ids == deps चार pins, id == name, कोई दोहराव नहीं), विफलता E_SUITE_PATCH_MISMATCH; (3) संस्करण ताला लगे रहते हैं (installed == pin या मैनिफ़ेस्ट पिन, profile पंक्ति वही संस्करण), विफलता E_SUITE_VERSION_MISMATCH; दाईं ओर निर्णय मंच 4/4 resolved, चारों सटीक संस्करण और network: false, writes: 0, tools: 0, config keys: 0 दिखाता है">
+</picture>
 
 ## किसके लिए है / किसके लिए नहीं
 
@@ -308,10 +313,10 @@ pnpm check             # node scripts/check.mjs (रजिस्ट्री ज
 | `scripts/check.mjs` | रजिस्ट्री के विरुद्ध इंस्टॉल स्मोक (सिर्फ़ CI; एकमात्र नेटवर्क वाला स्क्रिप्ट) |
 | `scripts/acceptance.mjs` | असली लोकल जाँचों से `ACCEPTANCE.csv` फिर बनाता है |
 | `scripts/gen-readme-assets.py` | README चित्र बनाता है (Python + Pillow) |
-| `docs/assets/` | फ़्लो डायग्राम और quickstart स्क्रीनशॉट |
+| `docs/assets/` | चित्र (हीरो और संरचना चित्र) और quickstart स्क्रीनशॉट |
 | `cordis.patch.yml` | सदस्य असेंबली सतह (चार `insert` पंक्तियाँ) |
 
-चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं: `python scripts/gen-readme-assets.py` `docs/assets/dsh-finops-suite-flow-{light,dark}.svg` लिखता है (वेक्टर, पाँचों भाषाओं में साझा) और पुराने `dsh-finops-suite-flow.svg` को अछूता छोड़ता है। स्क्रिप्ट दोबारा चलाई जा सकती है।
+चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं: `python scripts/gen-readme-assets.py` `docs/assets/dsh-finops-suite-hero-{zh,en}-{light,dark}.webp` (चार 1440×576 बैनर) और `docs/assets/dsh-finops-suite-flow-v5-{light,dark}.svg` (1100×660 वेक्टर संरचना चित्र, पाँचों भाषाओं में साझा) लिखता है, और पुराने `dsh-finops-suite-flow.svg` को अछूता छोड़ता है। स्क्रिप्ट दोबारा चलाई जा सकती है।
 
 पाँच भाषाओं के README: `README.md` चीनी स्रोत है; `README.en.md`, `README.es.md`, `README.pt.md` और `README.hi.md` उसका अनुसरण करते हैं।
 

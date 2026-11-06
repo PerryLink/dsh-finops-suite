@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-flow-dark.svg">
-  <img src="docs/assets/dsh-finops-suite-flow-light.svg" width="100%" alt="Fluxo de instalação do dsh-finops-suite: dsh plugin add → quatro linhas em cordis.patch.yml → quatro pins exatos em package.json → samples/quickstart/run.mjs → 4/4 resolved; códigos E_SUITE_PATCH_MISMATCH / E_SUITE_VERSION_MISMATCH / E_SUITE_MANIFEST_MISSING">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-en-dark.webp">
+  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="Banner do dsh-finops-suite: o nome e a linha quatro membros, uma instalação, quatro versões exatas, um conjunto; à direita, um único conjunto de versões prende quatro linhas de membros — dsh-einvoice 0.2.0-alpha.11 (fatura eletrônica), dsh-bankrec 0.1.0-alpha.16 (conciliação bancária), dsh-ap-three-way 0.1.0-alpha.11 (three-way match) e dsh-travel-recon 0.1.0-alpha.13 (conciliação de viagens) —, cada linha com [manifest pin] e profile: enabled, fechado pela contagem 4/4 resolved">
 </picture>
 
 # dsh-finops-suite
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-finops-suite
 ## O que é
 
 `dsh-finops-suite` instala de uma vez os quatro pacotes de finanças e operações: fatura eletrônica (`dsh-einvoice`), conciliação bancária (`dsh-bankrec`), three-way match (`dsh-ap-three-way`) e conciliação de viagens (`dsh-travel-recon`). `package.json#dependencies` fixa os quatro membros em versões exatas e `cordis.patch.yml` insere as quatro linhas de membros no perfil. Depois de instalar, execute o exemplo offline incluído: o terminal mostra cada membro, sua versão fixada e de onde ela resolveu; 4/4 resolved significa que o conjunto está completo. A suíte é um **bundle somente de instalação**: sem superfície de ferramentas, sem chaves de configuração, sem ler documentos, sem chamada de modelo, sem rede e sem gravar arquivos. As faturas, extratos, linhas de three-way e despesas de viagem reais são tratados pelas ferramentas dos quatro membros.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-finops-suite-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-finops-suite (escada): no alto à esquerda fica a única entrada — um comando de instalação e os três arquivos que ele lê (package.json, cordis.patch.yml, profile.json); três degraus sobem da esquerda inferior: (1) os manifestos são legíveis (package.json para dsh.bundle.patch, quatro linhas id/name), falha E_SUITE_MANIFEST_MISSING; (2) as linhas coincidem com os pins (patch quatro ids == deps quatro pins, id == name, sem duplicatas), falha E_SUITE_PATCH_MISMATCH; (3) as versões ficam travadas (installed == pin ou o pin do manifesto, a linha do perfil com a mesma versão), falha E_SUITE_VERSION_MISMATCH; o púlpito de veredito à direita imprime 4/4 resolved com as quatro versões exatas e network: false, writes: 0, tools: 0, config keys: 0">
+</picture>
 
 ## Para que serve / para que não serve
 
@@ -308,10 +313,10 @@ Sem etapa de build: o conteúdo publicado é `src/` + `samples/` + `cordis.patch
 | `scripts/check.mjs` | Smoke de instalação contra o registro (só CI; o único script com rede) |
 | `scripts/acceptance.mjs` | Reconstrói `ACCEPTANCE.csv` a partir de verificações locais reais |
 | `scripts/gen-readme-assets.py` | Gera as figuras do README (Python + Pillow) |
-| `docs/assets/` | Diagrama de fluxo e a captura do quickstart |
+| `docs/assets/` | Figuras (hero e diagrama estrutural) e a captura do quickstart |
 | `cordis.patch.yml` | Superfície de montagem dos membros (quatro linhas `insert`) |
 
-As figuras são geradas por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py): `python scripts/gen-readme-assets.py` escreve `docs/assets/dsh-finops-suite-flow-{light,dark}.svg` (vetorial, compartilhado pelos cinco idiomas) e deixa intacto o antigo `dsh-finops-suite-flow.svg`. O script pode ser executado de novo.
+As figuras são geradas por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py): `python scripts/gen-readme-assets.py` escreve `docs/assets/dsh-finops-suite-hero-{zh,en}-{light,dark}.webp` (quatro banners de 1440×576) e `docs/assets/dsh-finops-suite-flow-v5-{light,dark}.svg` (um diagrama vetorial de 1100×660 compartilhado pelos cinco idiomas), e deixa intacto o antigo `dsh-finops-suite-flow.svg`. O script pode ser executado de novo.
 
 README em cinco idiomas: `README.md` é a fonte em chinês; `README.en.md`, `README.es.md`, `README.pt.md` e `README.hi.md` o acompanham.
 
