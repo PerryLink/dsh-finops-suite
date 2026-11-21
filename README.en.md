@@ -157,7 +157,7 @@ The real output is in step 3 of "Three-step setup". The screenshot is the real t
 
 ![dsh-finops-suite quickstart real terminal output](docs/assets/quickstart.png)
 
-![dsh-finops-suite quickstart real terminal output](docs/assets/dsh-finops-suite-install.gif)
+![dsh-finops-suite quickstart real terminal output](docs/assets/dsh-finops-suite-demo.gif)
 
 *Animated replay of a real run recorded in this repository.*
 

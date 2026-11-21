@@ -157,7 +157,7 @@ A saída real está no passo 3 de «Instalação em três passos». A captura é
 
 ![Saída real de terminal do quickstart do dsh-finops-suite](docs/assets/quickstart.png)
 
-![Saída real de terminal do quickstart do dsh-finops-suite](docs/assets/dsh-finops-suite-install.gif)
+![Saída real de terminal do quickstart do dsh-finops-suite](docs/assets/dsh-finops-suite-demo.gif)
 
 *Repetição animada de uma execução real registrada neste repositório.*
 

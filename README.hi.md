@@ -157,7 +157,7 @@ node samples/quickstart/run.mjs
 
 ![dsh-finops-suite quickstart का असली टर्मिनल आउटपुट](docs/assets/quickstart.png)
 
-![dsh-finops-suite quickstart का असली टर्मिनल आउटपुट](docs/assets/dsh-finops-suite-install.gif)
+![dsh-finops-suite quickstart का असली टर्मिनल आउटपुट](docs/assets/dsh-finops-suite-demo.gif)
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
 
