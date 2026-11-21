@@ -157,6 +157,11 @@ node samples/quickstart/run.mjs
 
 ![dsh-finops-suite quickstart 真实运行输出](docs/assets/quickstart.png)
 
+![dsh-finops-suite quickstart 真实运行输出](docs/assets/dsh-finops-suite-install.gif)
+
+*本仓库一次真实运行的动图回放。*
+
+
 截图记录（命令、时间、输出 SHA-256）见 `screenshots.json`。
 
 ## 配置
