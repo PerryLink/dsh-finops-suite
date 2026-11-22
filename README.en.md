@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-en-dark.webp">
-  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="dsh-finops-suite hero: the wordmark and the line four members, one install, four exact pins, one set; on the right one pin set clamps four member rows — dsh-einvoice 0.2.0-alpha.11 (e-invoicing), dsh-bankrec 0.1.0-alpha.16 (bank reconciliation), dsh-ap-three-way 0.1.0-alpha.11 (three-way match) and dsh-travel-recon 0.1.0-alpha.13 (travel reconciliation) — each row carrying [manifest pin] and profile: enabled, closed by a 4/4 resolved tally">
+  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="dsh-finops-suite hero: the wordmark and the line four members, one install, four exact pins, one set; on the right one pin set clamps four member rows — dsh-einvoice 0.2.0-alpha.11 (e-invoicing), dsh-bankrec 0.1.0-alpha.16 (bank reconciliation), dsh-ap-three-way 0.1.0 (three-way match) and dsh-travel-recon 0.1.0-alpha.13 (travel reconciliation) — each row carrying [manifest pin] and profile: enabled, closed by a 4/4 resolved tally">
 </picture>
 
 # dsh-finops-suite
@@ -10,6 +10,8 @@
 **Install the four finance-ops packages in one command — then verify every member version resolves.**
 
 An install-only suite for DeepSeek Harness: e-invoicing (`dsh-einvoice`), bank reconciliation (`dsh-bankrec`), three-way match (`dsh-ap-three-way`) and travel reconciliation (`dsh-travel-recon`) pinned to one exact version set and installed together. The suite has no tool surface of its own — it reads no documents, makes no network calls, invokes no model, and keeps input and output local.
+
+Last verified on DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
 
 [Install](#three-step-setup) · [Configuration](#configuration) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -105,12 +107,12 @@ dsh plugin --profile <profile> add dsh-finops-suite
 
    ```text
    dsh-finops-suite quickstart (offline)
-   suite:    dsh-finops-suite 0.1.0-alpha.11
+   suite:    dsh-finops-suite 0.1.0
    profile:  finops-demo (synthetic, 4/4 rows enabled)
    members:  4/4 resolved
      dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
      dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
-     dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+     dsh-ap-three-way     0.1.0   [manifest pin]    profile=enabled
      dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -136,10 +138,10 @@ The suite only installs these members; it has no tool surface of its own. Versio
 |---|---:|
 | `dsh-einvoice` | `0.2.0-alpha.11` |
 | `dsh-bankrec` | `0.1.0-alpha.16` |
-| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-ap-three-way` | `0.1.0` |
 | `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-Current suite version: `0.1.0-alpha.11` (matches `package.json`).
+Current suite version: `0.1.0` (matches `package.json`).
 
 ## Example
 
@@ -161,7 +163,6 @@ The real output is in step 3 of "Three-step setup". The screenshot is the real t
 
 *Animated replay of a real run recorded in this repository.*
 
-
 Screenshot metadata (command, time, output SHA-256) is in `screenshots.json`.
 
 ## Configuration
@@ -171,7 +172,7 @@ The suite is an install-only bundle: **no Config schema and no runtime keys**. O
 | Adjustable | Where | Current value | Notes |
 |---|---|---|---|
 | Member set | `cordis.patch.yml` | `dsh-einvoice`, `dsh-bankrec`, `dsh-ap-three-way`, `dsh-travel-recon` | One `id` + `name` row per member; must match `dependencies` exactly |
-| Member versions | `package.json#dependencies` | `0.2.0-alpha.11`, `0.1.0-alpha.16`, `0.1.0-alpha.11`, `0.1.0-alpha.13` | Exact pins; upgrading one member raises `E_SUITE_VERSION_MISMATCH` |
+| Member versions | `package.json#dependencies` | `0.2.0-alpha.11`, `0.1.0-alpha.16`, `0.1.0`, `0.1.0-alpha.13` | Exact pins; upgrading one member raises `E_SUITE_VERSION_MISMATCH` |
 | Install target | `dsh plugin --profile <profile>` | your choice | The suite installs into the named profile only |
 | Demo metadata | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | Declares the offline sample, prompt and evidence paths |
 
@@ -266,7 +267,7 @@ The install reads no business documents; the bundled sample reads only three fil
 - **Install-only.** The suite has no tool surface of its own; it cannot process invoices, statements, three-way rows or travel claims, and provides no OCR, direct bank feed or ERP integration. Those capabilities (where they exist) belong to the members.
 - **Alpha / partial / not counted.** No GA or production-readiness claim; public acceptance rows marked `counted=false` do not count as formal acceptance.
 - **Versions are decided by suite releases.** With members pinned, upgrading a member alone fails; changing a member version requires a new suite release.
-- **The sample golden still records `0.1.0-alpha.9`.** `samples/quickstart/expected/result.json` was written for an older suite, while the current package is `0.1.0-alpha.11`; `node samples/quickstart/run.mjs --check` and the tests that depend on it report a golden mismatch. `run.mjs --json` still resolves 4/4; regenerating the golden file restores the check. This does not affect installation or member resolution.
+- **The sample golden still records `0.1.0-alpha.9`.** `samples/quickstart/expected/result.json` was written for an older suite, while the current package is `0.1.0`; `node samples/quickstart/run.mjs --check` and the tests that depend on it report a golden mismatch. `run.mjs --json` still resolves 4/4; regenerating the golden file restores the check. This does not affect installation or member resolution.
 - **No configuration keys.** Adjustable member settings live in each member's README; the suite adds no switches.
 
 ## Interoperability with other DSH plugins
@@ -325,7 +326,7 @@ Figures are generated by [`scripts/gen-readme-assets.py`](scripts/gen-readme-ass
 
 Five-language READMEs: `README.md` is the Chinese source; `README.en.md`, `README.es.md`, `README.pt.md` and `README.hi.md` follow it.
 
-Current version: `0.1.0-alpha.11` (matches `package.json`). Historical local verification (2026-11-02): `node --test test/suite.test.mjs` passed 8 tests and `node samples/quickstart/run.mjs --check` matched the golden file of that time; the current golden lag is described in "Known limitations".
+Current version: `0.1.0` (matches `package.json`). Historical local verification (2026-11-02): `node --test test/suite.test.mjs` passed 8 tests and `node samples/quickstart/run.mjs --check` matched the golden file of that time; the current golden lag is described in "Known limitations".
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `dsh-bundle`, `perrylink`, `suite`, `finance`
 

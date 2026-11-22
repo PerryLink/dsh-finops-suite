@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-en-dark.webp">
-  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="Banner do dsh-finops-suite: o nome e a linha quatro membros, uma instalação, quatro versões exatas, um conjunto; à direita, um único conjunto de versões prende quatro linhas de membros — dsh-einvoice 0.2.0-alpha.11 (fatura eletrônica), dsh-bankrec 0.1.0-alpha.16 (conciliação bancária), dsh-ap-three-way 0.1.0-alpha.11 (three-way match) e dsh-travel-recon 0.1.0-alpha.13 (conciliação de viagens) —, cada linha com [manifest pin] e profile: enabled, fechado pela contagem 4/4 resolved">
+  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="Banner do dsh-finops-suite: o nome e a linha quatro membros, uma instalação, quatro versões exatas, um conjunto; à direita, um único conjunto de versões prende quatro linhas de membros — dsh-einvoice 0.2.0-alpha.11 (fatura eletrônica), dsh-bankrec 0.1.0-alpha.16 (conciliação bancária), dsh-ap-three-way 0.1.0 (three-way match) e dsh-travel-recon 0.1.0-alpha.13 (conciliação de viagens) —, cada linha com [manifest pin] e profile: enabled, fechado pela contagem 4/4 resolved">
 </picture>
 
 # dsh-finops-suite
@@ -10,6 +10,8 @@
 **Instale os quatro pacotes de finanças e operações com um único comando e confirme que cada versão de membro resolve.**
 
 Suíte somente de instalação para o DeepSeek Harness: fatura eletrônica (`dsh-einvoice`), conciliação bancária (`dsh-bankrec`), three-way match (`dsh-ap-three-way`) e conciliação de viagens (`dsh-travel-recon`), fixados em um único conjunto de versões exatas e instalados juntos. A suíte não tem superfície de ferramentas própria: não lê documentos, não faz chamadas de rede, não invoca modelos e mantém entrada e saída no local.
+
+Última verificação: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
 
 [Instalação](#instalação-em-três-passos) · [Configuração](#configuração) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -105,12 +107,12 @@ dsh plugin --profile <profile> add dsh-finops-suite
 
    ```text
    dsh-finops-suite quickstart (offline)
-   suite:    dsh-finops-suite 0.1.0-alpha.11
+   suite:    dsh-finops-suite 0.1.0
    profile:  finops-demo (synthetic, 4/4 rows enabled)
    members:  4/4 resolved
      dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
      dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
-     dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+     dsh-ap-three-way     0.1.0   [manifest pin]    profile=enabled
      dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -136,10 +138,10 @@ A suíte só instala estes membros e não tem superfície de ferramentas própri
 |---|---:|
 | `dsh-einvoice` | `0.2.0-alpha.11` |
 | `dsh-bankrec` | `0.1.0-alpha.16` |
-| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-ap-three-way` | `0.1.0` |
 | `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-Versão atual da suíte: `0.1.0-alpha.11` (igual a `package.json`).
+Versão atual da suíte: `0.1.0` (igual a `package.json`).
 
 ## Exemplo
 
@@ -161,7 +163,6 @@ A saída real está no passo 3 de «Instalação em três passos». A captura é
 
 *Repetição animada de uma execução real registrada neste repositório.*
 
-
 Os metadados da captura (comando, hora, SHA-256 da saída) estão em `screenshots.json`.
 
 ## Configuração
@@ -171,7 +172,7 @@ A suíte é um bundle somente de instalação: **sem esquema Config e sem chaves
 | Ajustável | Onde | Valor atual | Observações |
 |---|---|---|---|
 | Conjunto de membros | `cordis.patch.yml` | `dsh-einvoice`, `dsh-bankrec`, `dsh-ap-three-way`, `dsh-travel-recon` | Uma linha `id` + `name` por membro; precisa coincidir exatamente com `dependencies` |
-| Versões dos membros | `package.json#dependencies` | `0.2.0-alpha.11`, `0.1.0-alpha.16`, `0.1.0-alpha.11`, `0.1.0-alpha.13` | Versões exatas; atualizar um membro dispara `E_SUITE_VERSION_MISMATCH` |
+| Versões dos membros | `package.json#dependencies` | `0.2.0-alpha.11`, `0.1.0-alpha.16`, `0.1.0`, `0.1.0-alpha.13` | Versões exatas; atualizar um membro dispara `E_SUITE_VERSION_MISMATCH` |
 | Destino da instalação | `dsh plugin --profile <profile>` | à sua escolha | A suíte instala apenas no perfil indicado |
 | Metadados do demo | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | Declara o exemplo offline, o prompt e os caminhos de evidência |
 
@@ -266,7 +267,7 @@ A instalação não lê documentos de negócio; o exemplo incluído lê apenas t
 - **Somente instalação.** A suíte não tem superfície de ferramentas própria; não processa faturas, extratos, linhas de three-way nem despesas de viagem, e não oferece OCR, conexão bancária direta ou integração com ERP. Essas capacidades (quando existem) pertencem aos membros.
 - **Alpha / partial / not counted.** Sem declaração de GA ou de prontidão para produção; as linhas públicas de aceitação com `counted=false` não contam como aceitação formal.
 - **As versões são decididas pela suíte.** Com os membros fixados, atualizar um deles isoladamente falha; mudar a versão de um membro exige uma nova versão da suíte.
-- **O arquivo dourado do exemplo ainda registra `0.1.0-alpha.9`.** `samples/quickstart/expected/result.json` foi escrito para uma suíte anterior, enquanto o pacote atual é `0.1.0-alpha.11`; por isso `node samples/quickstart/run.mjs --check` e os testes que dependem dele relatam divergência com o dourado. `run.mjs --json` continua resolvendo 4/4; regenere o dourado para restaurar a checagem. Isso não afeta a instalação nem a resolução de membros.
+- **O arquivo dourado do exemplo ainda registra `0.1.0-alpha.9`.** `samples/quickstart/expected/result.json` foi escrito para uma suíte anterior, enquanto o pacote atual é `0.1.0`; por isso `node samples/quickstart/run.mjs --check` e os testes que dependem dele relatam divergência com o dourado. `run.mjs --json` continua resolvendo 4/4; regenere o dourado para restaurar a checagem. Isso não afeta a instalação nem a resolução de membros.
 - **Sem chaves de configuração.** Os ajustes de cada membro ficam no README dele; a suíte não adiciona interruptores.
 
 ## Interoperabilidade com outros plugins DSH
@@ -325,7 +326,7 @@ As figuras são geradas por [`scripts/gen-readme-assets.py`](scripts/gen-readme-
 
 README em cinco idiomas: `README.md` é a fonte em chinês; `README.en.md`, `README.es.md`, `README.pt.md` e `README.hi.md` o acompanham.
 
-Versão atual: `0.1.0-alpha.11` (igual a `package.json`). Verificação local histórica (2026-11-02): `node --test test/suite.test.mjs` passou 8 testes e `node samples/quickstart/run.mjs --check` batia com o dourado da época; o desvio atual do dourado está descrito em «Limitações conhecidas».
+Versão atual: `0.1.0` (igual a `package.json`). Verificação local histórica (2026-11-02): `node --test test/suite.test.mjs` passou 8 testes e `node samples/quickstart/run.mjs --check` batia com o dourado da época; o desvio atual do dourado está descrito em «Limitações conhecidas».
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `dsh-bundle`, `perrylink`, `suite`, `finance`
 

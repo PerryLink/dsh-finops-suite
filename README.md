@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-zh-dark.webp">
-  <img src="docs/assets/dsh-finops-suite-hero-zh-light.webp" width="100%" alt="dsh-finops-suite 横幅：左侧一句话「一条命令装齐财务运营四件套，四个成员锁在同一组精确版本」；右侧一根同一组精确版本梁夹住四行成员——dsh-einvoice 0.2.0-alpha.11（电子发票）、dsh-bankrec 0.1.0-alpha.16（银行对账）、dsh-ap-three-way 0.1.0-alpha.11（三单匹配）、dsh-travel-recon 0.1.0-alpha.13（差旅对账），每行标出 [manifest pin] 与 profile: enabled，底部 4/4 resolved 与 profile 4/4 行已启用">
+  <img src="docs/assets/dsh-finops-suite-hero-zh-light.webp" width="100%" alt="dsh-finops-suite 横幅：左侧一句话「一条命令装齐财务运营四件套，四个成员锁在同一组精确版本」；右侧一根同一组精确版本梁夹住四行成员——dsh-einvoice 0.2.0-alpha.11（电子发票）、dsh-bankrec 0.1.0-alpha.16（银行对账）、dsh-ap-three-way 0.1.0（三单匹配）、dsh-travel-recon 0.1.0-alpha.13（差旅对账），每行标出 [manifest pin] 与 profile: enabled，底部 4/4 resolved 与 profile 4/4 行已启用">
 </picture>
 
 # dsh-finops-suite
@@ -10,6 +10,8 @@
 **一条命令装齐财务运营四件套，装完立刻核对四个成员版本是否都能解析。**
 
 面向 DeepSeek Harness 的纯安装型套件：把电子发票（`dsh-einvoice`）、银行对账（`dsh-bankrec`）、三单匹配（`dsh-ap-three-way`）与差旅对账（`dsh-travel-recon`）钉在同一组精确版本上一起装。套件本身没有工具面——不读单据、不联网、不调用模型，输入输出都留在本地。
+
+最近一次核验：DeepSeek Harness `dsh-v0.2.3-alpha.1`（2026-11-22）。
 
 [安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -105,12 +107,12 @@ dsh plugin --profile <profile> add dsh-finops-suite
 
    ```text
    dsh-finops-suite quickstart (offline)
-   suite:    dsh-finops-suite 0.1.0-alpha.11
+   suite:    dsh-finops-suite 0.1.0
    profile:  finops-demo (synthetic, 4/4 rows enabled)
    members:  4/4 resolved
      dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
      dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
-     dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+     dsh-ap-three-way     0.1.0   [manifest pin]    profile=enabled
      dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -136,10 +138,10 @@ dsh plugin --profile <profile> add dsh-finops-suite
 |---|---:|
 | `dsh-einvoice` | `0.2.0-alpha.11` |
 | `dsh-bankrec` | `0.1.0-alpha.16` |
-| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-ap-three-way` | `0.1.0` |
 | `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-套件当前版本：`0.1.0-alpha.11`（与 `package.json` 一致）。
+套件当前版本：`0.1.0`（与 `package.json` 一致）。
 
 ## 示例
 
@@ -161,7 +163,6 @@ node samples/quickstart/run.mjs
 
 *本仓库一次真实运行的动图回放。*
 
-
 截图记录（命令、时间、输出 SHA-256）见 `screenshots.json`。
 
 ## 配置
@@ -171,7 +172,7 @@ node samples/quickstart/run.mjs
 | 可调项 | 位置 | 当前值 | 说明 |
 |---|---|---|---|
 | 成员集合 | `cordis.patch.yml` | `dsh-einvoice`、`dsh-bankrec`、`dsh-ap-three-way`、`dsh-travel-recon` | 每个成员一行 `id` + `name`；必须与 `dependencies` 完全一致 |
-| 成员版本 | `package.json#dependencies` | `0.2.0-alpha.11`、`0.1.0-alpha.16`、`0.1.0-alpha.11`、`0.1.0-alpha.13` | 精确版本；单独升级成员会触发 `E_SUITE_VERSION_MISMATCH` |
+| 成员版本 | `package.json#dependencies` | `0.2.0-alpha.11`、`0.1.0-alpha.16`、`0.1.0`、`0.1.0-alpha.13` | 精确版本；单独升级成员会触发 `E_SUITE_VERSION_MISMATCH` |
 | 安装目标 | `dsh plugin --profile <profile>` | 由你指定 | 套件只装进指定 profile |
 | 演示元数据 | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | 声明离线样例、提示语与证据路径 |
 
@@ -266,7 +267,7 @@ node samples/quickstart/run.mjs
 - **install-only。** 套件本身没有工具面，不能处理发票、流水、三单或差旅单，也不做 OCR、银行直连或 ERP 对接；这些能力（如果有）属于成员包。
 - **alpha / partial / not counted。** 不作 GA 或生产可用声明；公开验收行里 `counted=false` 的项不计入正式验收。
 - **版本由套件发布决定。** 成员版本钉死后，单独升级成员会失败；要换成员版本必须等新套件发布。
-- **样例金标仍停留在 `0.1.0-alpha.9`。** `samples/quickstart/expected/result.json` 记录的是旧套件版本，而当前发布物是 `0.1.0-alpha.11`；`node samples/quickstart/run.mjs --check` 与依赖它的测试会报金标不一致。`run.mjs --json` 的实际输出仍是 4/4 resolved；重新生成金标即可恢复检查。此问题不影响安装与成员解析。
+- **样例金标仍停留在 `0.1.0-alpha.9`。** `samples/quickstart/expected/result.json` 记录的是旧套件版本，而当前发布物是 `0.1.0`；`node samples/quickstart/run.mjs --check` 与依赖它的测试会报金标不一致。`run.mjs --json` 的实际输出仍是 4/4 resolved；重新生成金标即可恢复检查。此问题不影响安装与成员解析。
 - **无配置键。** 成员的可调项在各自 README；套件不提供额外开关。
 
 ## 与其他 DSH 插件的互操作性
@@ -325,7 +326,7 @@ pnpm check             # node scripts/check.mjs（查 registry，CI 用）
 
 五语 README：`README.md` 是中文源，`README.en.md` / `README.es.md` / `README.pt.md` / `README.hi.md` 同步。
 
-当前版本：`0.1.0-alpha.11`（与 `package.json` 一致）。历史本地验证（2026-11-02）：`node --test test/suite.test.mjs` 8 项通过，`node samples/quickstart/run.mjs --check` 与当时金标一致；当前金标滞后见「已知限制」。
+当前版本：`0.1.0`（与 `package.json` 一致）。历史本地验证（2026-11-02）：`node --test test/suite.test.mjs` 8 项通过，`node samples/quickstart/run.mjs --check` 与当时金标一致；当前金标滞后见「已知限制」。
 
 Topics：`dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `dsh-bundle`, `perrylink`, `suite`, `finance`
 

@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-finops-suite-hero-en-dark.webp">
-  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="dsh-finops-suite हीरो: नाम और पंक्ति चार सदस्य, एक इंस्टॉल, चार सटीक संस्करण, एक सेट; दाईं ओर एक ही संस्करण सेट चार सदस्य पंक्तियों को पकड़े हुए — dsh-einvoice 0.2.0-alpha.11 (ई-इनवॉइस), dsh-bankrec 0.1.0-alpha.16 (बैंक रिकंसिलिएशन), dsh-ap-three-way 0.1.0-alpha.11 (थ्री-वे मैच) और dsh-travel-recon 0.1.0-alpha.13 (ट्रैवल रिकंसिलिएशन) —, हर पंक्ति पर [manifest pin] और profile: enabled, अंत में 4/4 resolved गिनती">
+  <img src="docs/assets/dsh-finops-suite-hero-en-light.webp" width="100%" alt="dsh-finops-suite हीरो: नाम और पंक्ति चार सदस्य, एक इंस्टॉल, चार सटीक संस्करण, एक सेट; दाईं ओर एक ही संस्करण सेट चार सदस्य पंक्तियों को पकड़े हुए — dsh-einvoice 0.2.0-alpha.11 (ई-इनवॉइस), dsh-bankrec 0.1.0-alpha.16 (बैंक रिकंसिलिएशन), dsh-ap-three-way 0.1.0 (थ्री-वे मैच) और dsh-travel-recon 0.1.0-alpha.13 (ट्रैवल रिकंसिलिएशन) —, हर पंक्ति पर [manifest pin] और profile: enabled, अंत में 4/4 resolved गिनती">
 </picture>
 
 # dsh-finops-suite
@@ -10,6 +10,8 @@
 **एक ही कमांड से वित्त-संचालन के चारों पैकेज इंस्टॉल करें और तुरंत जाँचें कि हर सदस्य का संस्करण रिज़ॉल्व होता है।**
 
 DeepSeek Harness के लिए सिर्फ़ इंस्टॉल करने वाली सूट: ई-इनवॉइस (`dsh-einvoice`), बैंक रिकंसिलिएशन (`dsh-bankrec`), थ्री-वे मैच (`dsh-ap-three-way`) और ट्रैवल रिकंसिलिएशन (`dsh-travel-recon`) को एक ही सटीक संस्करण-सेट पर पिन करके साथ इंस्टॉल करती है। सूट की अपनी कोई टूल सतह नहीं है — यह कोई दस्तावेज़ नहीं पढ़ती, नेटवर्क कॉल नहीं करती, मॉडल नहीं बुलाती और इनपुट/आउटपुट लोकल रखती है।
+
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
 
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
@@ -105,12 +107,12 @@ dsh plugin --profile <profile> add dsh-finops-suite
 
    ```text
    dsh-finops-suite quickstart (offline)
-   suite:    dsh-finops-suite 0.1.0-alpha.11
+   suite:    dsh-finops-suite 0.1.0
    profile:  finops-demo (synthetic, 4/4 rows enabled)
    members:  4/4 resolved
      dsh-einvoice         0.2.0-alpha.11   [manifest pin]    profile=enabled
      dsh-bankrec          0.1.0-alpha.16   [manifest pin]    profile=enabled
-     dsh-ap-three-way     0.1.0-alpha.11   [manifest pin]    profile=enabled
+     dsh-ap-three-way     0.1.0   [manifest pin]    profile=enabled
      dsh-travel-recon     0.1.0-alpha.13   [manifest pin]    profile=enabled
    network:  false (no fetch, no registry call)
    ```
@@ -136,10 +138,10 @@ dsh plugin --profile <profile> add dsh-finops-suite
 |---|---:|
 | `dsh-einvoice` | `0.2.0-alpha.11` |
 | `dsh-bankrec` | `0.1.0-alpha.16` |
-| `dsh-ap-three-way` | `0.1.0-alpha.11` |
+| `dsh-ap-three-way` | `0.1.0` |
 | `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-सूट का वर्तमान संस्करण: `0.1.0-alpha.11` (`package.json` से मेल खाता है)।
+सूट का वर्तमान संस्करण: `0.1.0` (`package.json` से मेल खाता है)।
 
 ## उदाहरण
 
@@ -161,7 +163,6 @@ node samples/quickstart/run.mjs
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
 
-
 स्क्रीनशॉट मेटाडेटा (कमांड, समय, आउटपुट SHA-256) `screenshots.json` में है।
 
 ## कॉन्फ़िगरेशन
@@ -171,7 +172,7 @@ node samples/quickstart/run.mjs
 | समायोज्य | कहाँ | वर्तमान मान | टिप्पणी |
 |---|---|---|---|
 | सदस्य सेट | `cordis.patch.yml` | `dsh-einvoice`, `dsh-bankrec`, `dsh-ap-three-way`, `dsh-travel-recon` | हर सदस्य के लिए एक `id` + `name` पंक्ति; `dependencies` से बिल्कुल मेल खाना चाहिए |
-| सदस्य संस्करण | `package.json#dependencies` | `0.2.0-alpha.11`, `0.1.0-alpha.16`, `0.1.0-alpha.11`, `0.1.0-alpha.13` | सटीक पिन; एक सदस्य अपग्रेड करने पर `E_SUITE_VERSION_MISMATCH` |
+| सदस्य संस्करण | `package.json#dependencies` | `0.2.0-alpha.11`, `0.1.0-alpha.16`, `0.1.0`, `0.1.0-alpha.13` | सटीक पिन; एक सदस्य अपग्रेड करने पर `E_SUITE_VERSION_MISMATCH` |
 | इंस्टॉल लक्ष्य | `dsh plugin --profile <profile>` | आपकी पसंद | सूट सिर्फ़ बताई गई प्रोफ़ाइल में इंस्टॉल होती है |
 | डेमो मेटाडेटा | `package.json#dsh.demo` | `sample` / `prompt` / `expect` / `screenshot` | ऑफ़लाइन नमूना, प्रॉम्प्ट और साक्ष्य पथ घोषित करता है |
 
@@ -266,7 +267,7 @@ node samples/quickstart/run.mjs
 - **सिर्फ़ इंस्टॉल।** सूट की अपनी कोई टूल सतह नहीं; यह इनवॉइस, स्टेटमेंट, थ्री-वे पंक्तियाँ या यात्रा दावे प्रोसेस नहीं कर सकती, और OCR, सीधा बैंक कनेक्शन या ERP इंटीग्रेशन नहीं देती। ये क्षमताएँ (जहाँ मौजूद हैं) सदस्यों की हैं।
 - **Alpha / partial / not counted।** GA या उत्पादन-तैयारी का कोई दावा नहीं; `counted=false` वाली सार्वजनिक स्वीकृति पंक्तियाँ औपचारिक स्वीकृति में नहीं गिनी जातीं।
 - **संस्करण सूट रिलीज़ तय करती है।** सदस्य पिन होने पर अकेले सदस्य को अपग्रेड करना विफल होता है; सदस्य संस्करण बदलने के लिए नई सूट रिलीज़ चाहिए।
-- **नमूने का गोल्डन अभी भी `0.1.0-alpha.9` दर्ज करता है।** `samples/quickstart/expected/result.json` पुरानी सूट के लिए लिखा गया था, जबकि वर्तमान पैकेज `0.1.0-alpha.11` है; इसलिए `node samples/quickstart/run.mjs --check` और उस पर निर्भर टेस्ट गोल्डन-मेल न होने की शिकायत करते हैं। `run.mjs --json` अभी भी 4/4 रिज़ॉल्व करता है; गोल्डन फिर बनाने से जाँच बहाल हो जाती है। इसका इंस्टॉल या सदस्य-रिज़ॉल्यूशन पर कोई असर नहीं।
+- **नमूने का गोल्डन अभी भी `0.1.0-alpha.9` दर्ज करता है।** `samples/quickstart/expected/result.json` पुरानी सूट के लिए लिखा गया था, जबकि वर्तमान पैकेज `0.1.0` है; इसलिए `node samples/quickstart/run.mjs --check` और उस पर निर्भर टेस्ट गोल्डन-मेल न होने की शिकायत करते हैं। `run.mjs --json` अभी भी 4/4 रिज़ॉल्व करता है; गोल्डन फिर बनाने से जाँच बहाल हो जाती है। इसका इंस्टॉल या सदस्य-रिज़ॉल्यूशन पर कोई असर नहीं।
 - **कोई कॉन्फ़िगरेशन कुंजी नहीं।** हर सदस्य के समायोजन उसके README में हैं; सूट कोई अतिरिक्त स्विच नहीं देती।
 
 ## अन्य DSH प्लगइनों के साथ इंटरऑपरेबिलिटी
@@ -325,7 +326,7 @@ pnpm check             # node scripts/check.mjs (रजिस्ट्री ज
 
 पाँच भाषाओं के README: `README.md` चीनी स्रोत है; `README.en.md`, `README.es.md`, `README.pt.md` और `README.hi.md` उसका अनुसरण करते हैं।
 
-वर्तमान संस्करण: `0.1.0-alpha.11` (`package.json` से मेल खाता है)। ऐतिहासिक लोकल सत्यापन (2026-11-02): `node --test test/suite.test.mjs` में 8 टेस्ट पास हुए और `node samples/quickstart/run.mjs --check` उस समय के गोल्डन से मेल खाता था; गोल्डन का मौजूदा अंतर «ज्ञात सीमाएँ» में बताया गया है।
+वर्तमान संस्करण: `0.1.0` (`package.json` से मेल खाता है)। ऐतिहासिक लोकल सत्यापन (2026-11-02): `node --test test/suite.test.mjs` में 8 टेस्ट पास हुए और `node samples/quickstart/run.mjs --check` उस समय के गोल्डन से मेल खाता था; गोल्डन का मौजूदा अंतर «ज्ञात सीमाएँ» में बताया गया है।
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `deepseek`, `cordis`, `dsh-bundle`, `perrylink`, `suite`, `finance`
 
