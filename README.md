@@ -141,7 +141,7 @@ dsh plugin --profile <profile> add dsh-finops-suite
 | `dsh-ap-three-way` | `0.1.0` |
 | `dsh-travel-recon` | `0.1.0-alpha.13` |
 
-套件当前版本：`0.1.0`（与 `package.json` 一致）。
+套件当前版本：`0.1.1`（与 `package.json` 一致）。
 
 ## 示例
 

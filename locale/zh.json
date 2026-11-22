@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "财务运营套件",
+    "description": "面向 DeepSeek Harness 的纯安装型套件：把电子发票（dsh-einvoice）、银行对账（dsh-bankrec）、三单匹配（dsh-ap-three-way）与差旅对账（dsh-travel-recon）钉在同一组精确版本上一起装。套件本身没有工具面——不读单据、不联网、不调用模型，输入输出都留在本地。"
+  }
+}

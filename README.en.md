@@ -7,6 +7,8 @@
 
 # dsh-finops-suite
 
+Current version `0.1.1`.
+
 **Install the four finance-ops packages in one command — then verify every member version resolves.**
 
 An install-only suite for DeepSeek Harness: e-invoicing (`dsh-einvoice`), bank reconciliation (`dsh-bankrec`), three-way match (`dsh-ap-three-way`) and travel reconciliation (`dsh-travel-recon`) pinned to one exact version set and installed together. The suite has no tool surface of its own — it reads no documents, makes no network calls, invokes no model, and keeps input and output local.

@@ -1,6 +1,6 @@
 {
   "suite": "dsh-finops-suite",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "sample": "samples/quickstart/input/profile.json",
   "network": false,
   "profile": {

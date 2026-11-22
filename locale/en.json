@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Finance ops suite",
+    "description": "An install-only suite for DeepSeek Harness: e-invoicing (dsh-einvoice), bank reconciliation (dsh-bankrec), three-way match (dsh-ap-three-way) and travel reconciliation (dsh-travel-recon) pinned to one exact version set and installed together. The suite has no tool surface of its own — it reads no documents, makes no network calls, invokes no model, and ke..."
+  }
+}
